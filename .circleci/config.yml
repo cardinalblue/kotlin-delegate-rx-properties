@@ -21,7 +21,7 @@ jobs:
 
       - run:
           name: Download dependencies
-          command: ./gradlew androidDependencies --debug
+          command: ./gradlew androidDependencies --stacktrace
 
       - save_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
