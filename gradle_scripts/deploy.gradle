@@ -7,6 +7,7 @@ publish {
     repoName = 'android'
     uploadName = 'kotlin-delegate-rx-properties'
 
+    userOrg = 'CardinalBlue'
     groupId = 'com.cardinalblue'
     artifactId = 'kotlin-delegate-rx-properties'
     publishVersion = project.artifact_version
