@@ -51,4 +51,4 @@ dependencies {
 }
 
 // Deployment script.
-apply from: rootProject.file('gradle_scripts/deploy.gradle')
+apply from: 'deploy.gradle'

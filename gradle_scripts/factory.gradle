@@ -1,7 +1,27 @@
+// FIXME: This changes the aar artifact name and causes the bintrayUpload job
+// FIXME: failure
+//android.libraryVariants.all { variant ->
+//    variant.outputs.all { output ->
+//        if (outputFileName.endsWith('.aar')) {
+//            outputFileName = "${project.artifact_base_name}-${project.artifact_version}.aar"
+//        }
+//    }
+//}
+
+// FIXME: Somehow doesn't work
 android.libraryVariants.all { variant ->
-    variant.outputs.all { output ->
-        if (outputFileName.endsWith('.aar')) {
-            outputFileName = "${project.artifact_base_name}-${project.artifact_version}.aar"
+    def variantName = variant.name.capitalize()
+    def copyTaskName = "copy${variantName}Artifacts"
+    def assembleTaskName = "assemble${variantName}"
+    task(copyTaskName, type: Copy, dependsOn: assembleTaskName, group: "build") {
+        variant.outputs.each { output ->
+            def newOutputName = output.outputFile.name.replace("${variantName}.aar", "-${project.artifact_version}.aar")
+            from(output.outputFile.parent) {
+                include output.outputFile.name
+                rename output.outputFile.name, newOutputName
+            }
+            into output.outputFile.parent
         }
     }
+    project.tasks.getByName(assembleTaskName).finalizedBy(copyTaskName)
 }
