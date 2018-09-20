@@ -34,7 +34,7 @@ jobs:
 
       - run:
           name: Run unit test
-          command: ./gradlew testDebugUnitTest
+          command: ./gradlew testDebugUnitTest --stacktrace
 
       - store_artifacts:
           path: rx-delegate/build/outputs/
@@ -63,15 +63,15 @@ jobs:
 
       - run:
           name: Download dependencies
-          command: ./gradlew androidDependencies
+          command: ./gradlew androidDependencies --stacktrace
 
       - run:
           name: Run unit test
-          command: ./gradlew testDebugUnitTest
+          command: ./gradlew testDebugUnitTest --stacktrace
 
       - run:
           name: Build artifact
-          command: ./gradlew assembleRelease
+          command: ./gradlew assembleRelease --stacktrace
 
 #      - run:
 #          name: Publish to Github
@@ -79,7 +79,7 @@ jobs:
 
       - run:
           name: Publish to JCenter
-          command: ./gradlew rx-delegate::bintrayUpload
+          command: ./gradlew rx-delegate::bintrayUpload --stacktrace
 
       - store_artifacts:
           path: rx-delegate/build/outputs/
