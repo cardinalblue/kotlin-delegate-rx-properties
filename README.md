@@ -18,7 +18,7 @@ If you cannot find the package, add this to your gradle repository
 
 ```
 maven {
-    url 'https://dl.bintray.com/boyw165/android'
+    url 'https://dl.bintray.com/cblue/android'
 }
 ```
 
