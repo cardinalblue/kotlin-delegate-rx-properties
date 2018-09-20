@@ -1,0 +1,7 @@
+android.libraryVariants.all { variant ->
+    variant.outputs.all { output ->
+        if (outputFileName.endsWith('.aar')) {
+            outputFileName = "${project.artifact_base_name}-${project.artifact_version}.aar"
+        }
+    }
+}
