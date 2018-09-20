@@ -1,4 +1,5 @@
-[ ![Download](https://api.bintray.com/packages/boyw165/android/kotlin-delegate-rx-properties/images/download.svg) ](https://bintray.com/boyw165/android/kotlin-delegate-rx-properties/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/cblue/android/kotlin-delegate-rx-properties/images/download.svg) ](https://bintray.com/cblue/android/kotlin-delegate-rx-properties/_latestVersion)
+[![CircleCI](https://circleci.com/gh/cardinalblue/kotlin-delegate-rx-properties.svg?style=svg)](https://circleci.com/gh/cardinalblue/kotlin-delegate-rx-properties)
 
 Kotlin Delegate ReactiveX Properties
 ===
