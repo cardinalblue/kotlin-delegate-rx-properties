@@ -20,7 +20,9 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled project.hasProperty("testProguard")
+            // Configurable ProGuard testing, for example,
+            // "./gradlew assembleDebug -PtestProguard=true"
+            minifyEnabled project.hasProperty('testProguard')
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {

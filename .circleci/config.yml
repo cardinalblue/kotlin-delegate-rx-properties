@@ -28,13 +28,9 @@ jobs:
           paths:
             - ~/android
 
-      - store_artifacts:
-          path: rx-delegate/build/reports/
-          destination: reports/
-
       - run:
           name: Run unit test
-          command: ./gradlew testDebugUnitTest --stacktrace
+          command: ./gradlew testDebugUnitTest -PtestProguard=true --stacktrace
 
       - store_artifacts:
           path: rx-delegate/build/outputs/
