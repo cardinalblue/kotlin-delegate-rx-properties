@@ -12,7 +12,7 @@ Setup
 Add this into your dependencies block.
 
 ```
-implementation 'com.cardinalblue:kotlin-delegate-rx-properties:1.0.0'
+implementation 'com.cardinalblue:kotlin-delegate-rx-properties:x.x.x'
 ```
 
 If you cannot find the package, add this to your gradle repository
