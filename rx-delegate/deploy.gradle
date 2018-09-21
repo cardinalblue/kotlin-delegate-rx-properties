@@ -13,7 +13,7 @@ publish {
     publishVersion = project.artifact_version
 
     desc = 'A Kotlin delegate turning properties to ReactiveX observable easily.'
-    website = 'https://github.com/boyw165/kotlin-delegate-rx-properties.git'
+    website = 'https://github.com/cardinalblue/kotlin-delegate-rx-properties'
     dryRun = false
 }
 

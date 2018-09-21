@@ -67,11 +67,11 @@ jobs:
 
       - run:
           name: Run unit test
-          command: ./gradlew testDebugUnitTest --stacktrace
+          command: ./gradlew testReleaseUnitTest --stacktrace
 
       - run:
           name: Build artifact
-          command: ./gradlew assembleRelease --stacktrace
+          command: ./gradlew build --stacktrace
 
 #      - run:
 #          name: Publish to Github
