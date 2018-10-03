@@ -2,6 +2,7 @@
 //
 // Author: jaime@cardinalblue.com
 //         boy@cardinalblue.com
+//         prada@cardinalblue.com
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the "Software"),
@@ -23,6 +24,7 @@
 
 package com.cardinalblue
 
+import com.cardinalblue.delegate.rx.RxMutableList
 import com.cardinalblue.delegate.rx.RxMutableMap
 import com.cardinalblue.delegate.rx.RxMutableSet
 import com.cardinalblue.delegate.rx.RxValue
@@ -44,6 +46,7 @@ fun <T : Any> KProperty0<T>.changed(): Observable<T> {
             is RxValue<*> -> it.changed as Observable<T>
             is RxMutableSet<*> -> it.changed as Observable<T>
             is RxMutableMap<*, *> -> it.changed as Observable<T>
+            is RxMutableList<*> -> it.changed as Observable<T>
             else -> throw IllegalAccessException()
         }
     } ?: Observable.just(this as T)
@@ -97,6 +100,32 @@ fun <K : Any, V : Any> KProperty0<MutableMap<K, V>>.tupleRemoved(): Observable<P
     isAccessible = true
 
     val delegate = this.getDelegate() as? RxMutableMap<K, V>
+
+    return delegate?.itemRemoved ?: Observable.empty()
+}
+
+/**
+ * Observe the item added from a [MutableList].
+ */
+@Suppress("UNCHECKED_CAST")
+fun <T : Any> KProperty0<MutableList<T>>.elementAdded(): Observable<T> {
+    // Use "isAccessible = true" to make the property accessible
+    isAccessible = true
+
+    val delegate = this.getDelegate() as? RxMutableList<T>
+
+    return delegate?.itemAdded ?: Observable.empty()
+}
+
+/**
+ * Observe the item removed from a [MutableList].
+ */
+@Suppress("UNCHECKED_CAST")
+fun <T : Any> KProperty0<MutableList<T>>.elementRemoved(): Observable<T> {
+    // Use "isAccessible = true" to make the property accessible
+    isAccessible = true
+
+    val delegate = this.getDelegate() as? RxMutableList<T>
 
     return delegate?.itemRemoved ?: Observable.empty()
 }
